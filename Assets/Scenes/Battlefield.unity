@@ -807,7 +807,7 @@ MonoBehaviour:
   _commonCamera: {fileID: 980816867}
   _lightFireCamera: {fileID: 299276784}
   _heavyFireCamera: {fileID: 214912085}
-  _impulseMagnitude: 0.5
+  _impulseMagnitude: 0.2
   _hevyFireImpulceSource: {fileID: 214912088}
 --- !u!1 &980816866
 GameObject:
