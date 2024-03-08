@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerCameras _playerCameras;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
     [SerializeField] float _speed;
@@ -68,12 +69,19 @@ public class Player : MonoBehaviour
         if (_fireCoroutine == null)
         {
             if (_fireJoystick.Vertical == -1)
+            {
+                _playerCameras.PrioritizeHeavyFireCamera();
                 _fireCoroutine = StartCoroutine(FireHeavy());
+            }
             else if (_fireJoystick.Vertical == 1)
+            {
+                _playerCameras.PrioritizeLightFireCamera();
                 _fireCoroutine = StartCoroutine(FireLight());
+            }
         }
         else if (_fireJoystick.Vertical == 0)
         {
+            _playerCameras.PrioritizeCommonCamera();
             StopCoroutine(_fireCoroutine);
             _fireCoroutine = null;
         }
@@ -101,6 +109,7 @@ public class Player : MonoBehaviour
             flash.transform.localPosition = spawnPoint.localPosition;
             flash.transform.localRotation = spawnPoint.localRotation;
             flash.transform.localScale = spawnPoint.localScale;
+            _playerCameras.MakeHeavyFireImpulse();
         }
         _fireCoroutine = StartCoroutine(FireHeavy());
     }
