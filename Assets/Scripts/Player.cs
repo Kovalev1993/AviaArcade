@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Plane _plane;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
-    [SerializeField] float _speed;
+    [SerializeField] float _rotationDeviationMax;
     [Header("Fire")]
     [SerializeField] FloatingJoystick _fireJoystick;
     [SerializeField] Gun[] _lightGuns = new Gun[2];
@@ -26,8 +26,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(_speed * _movingJoystick.Direction, Space.World);
-        transform.LookAt(_enemy);
+        transform.rotation = Quaternion.Euler(
+            -_rotationDeviationMax * _movingJoystick.Direction.y,
+            _rotationDeviationMax * _movingJoystick.Direction.x,
+            0
+        );
     }
 
     private void Update()
