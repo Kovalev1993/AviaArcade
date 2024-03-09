@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform _enemy;
+    [SerializeField] private Plane _plane;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
     [SerializeField] float _speed;
@@ -11,6 +11,18 @@ public class Player : MonoBehaviour
     [SerializeField] FloatingJoystick _fireJoystick;
     [SerializeField] Gun[] _lightGuns = new Gun[2];
     [SerializeField] Gun[] _heavyGuns = new Gun[2];
+
+    private void Start()
+    {
+        foreach (var gun in _lightGuns)
+        {
+            gun.SetParentSpeed(_plane.GetSpeed());
+        }
+        foreach (var gun in _heavyGuns)
+        {
+            gun.SetParentSpeed(_plane.GetSpeed());
+        }
+    }
 
     private void FixedUpdate()
     {

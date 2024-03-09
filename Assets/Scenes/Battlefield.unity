@@ -282,8 +282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 299276785}
   - component: {fileID: 299276784}
-  - component: {fileID: 299276787}
-  - component: {fileID: 299276786}
   m_Layer: 0
   m_Name: CM vcam_lightFire
   m_TagString: Untagged
@@ -345,82 +343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -25.018, y: 0, z: 0}
---- !u!114 &299276786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299276783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 2
-    m_CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ImpulseDuration: 0.05
-    m_ImpulseType: 0
-    m_DissipationRate: 0.25
-    m_RawSignal: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 100
-    m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: 0, z: 0}
---- !u!114 &299276787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299276783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ApplyAfter: 2
-  m_ChannelMask: 1
-  m_Gain: 1
-  m_Use2DDistance: 0
-  m_UseCameraSpace: 1
-  m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &344152799
 GameObject:
   m_ObjectHideFlags: 3
@@ -483,9 +405,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 6.5, z: -12}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.1
+  m_YDamping: 0.1
+  m_ZDamping: 0.1
   m_AngularDampingMode: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -715,7 +637,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.042438153, y: -1.8838468e-15, z: 8.235924e-17, w: 0.99909914}
+  m_LocalRotation: {x: 0.042438127, y: 0.0000000300072, z: -0.0000000012745975, w: 0.99909914}
   m_LocalPosition: {x: 0, y: 6, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -823,8 +745,6 @@ MonoBehaviour:
   _commonCamera: {fileID: 980816867}
   _lightFireCamera: {fileID: 299276784}
   _heavyFireCamera: {fileID: 214912085}
-  _lightImpulseMagnitude: 0.15
-  _lightFireImpulceSource: {fileID: 299276786}
   _heavyImpulseMagnitude: 0.2
   _hevyFireImpulceSource: {fileID: 214912088}
 --- !u!1 &980816866
@@ -889,7 +809,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980816866}
-  m_LocalRotation: {x: 0.042438153, y: -1.8838468e-15, z: 8.235924e-17, w: 0.99909914}
+  m_LocalRotation: {x: 0.042438127, y: 0.0000000300072, z: -0.0000000012745975, w: 0.99909914}
   m_LocalPosition: {x: 0, y: 6, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -907,6 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1109261625}
+  - component: {fileID: 1109261626}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -930,6 +851,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109261626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109261624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854154e6dccfeb43b83fcfcb5016c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!1001 &1118317975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1406,6 +1340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748163523}
   - component: {fileID: 1748163524}
+  - component: {fileID: 1748163525}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1446,6 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1109261625}
+  _plane: {fileID: 1748163525}
   _movingJoystick: {fileID: 1739524713}
   _speed: 0.5
   _fireJoystick: {fileID: 1473610161}
@@ -1455,6 +1391,19 @@ MonoBehaviour:
   _heavyGuns:
   - {fileID: 3861756300066764091}
   - {fileID: 1841918388}
+--- !u!114 &1748163525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748163522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854154e6dccfeb43b83fcfcb5016c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!1 &1822123563
 GameObject:
   m_ObjectHideFlags: 3
@@ -1502,10 +1451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
+  m_AmplitudeGain: 0.5
+  m_FrequencyGain: 1.5
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1822123566
 MonoBehaviour:
@@ -1534,9 +1483,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 6.5, z: -12}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.1
+  m_YDamping: 0.1
+  m_ZDamping: 0.1
   m_AngularDampingMode: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -1976,9 +1925,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 6, z: -5.5}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.1
+  m_YDamping: 0.1
+  m_ZDamping: 0.1
   m_AngularDampingMode: 1
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -2040,6 +1989,10 @@ PrefabInstance:
       value: GunLight_1
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
+      propertyPath: _fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _fireStopEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2049,7 +2002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _newBulletEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _fireStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2406,6 +2359,10 @@ PrefabInstance:
       value: GunLight_0
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
+      propertyPath: _fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _fireStopEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2415,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _newBulletEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044164163034895263, guid: d2fe9792b02e05349bc9f4188f0b7710, type: 3}
       propertyPath: _fireStopEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
