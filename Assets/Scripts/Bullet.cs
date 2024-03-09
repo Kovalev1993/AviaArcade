@@ -13,6 +13,6 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate((_speed + _parentSpeed) * transform.forward);        
+        transform.Translate((_speed + _parentSpeed) * transform.forward, Space.World);
     }
 }

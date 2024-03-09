@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Transform _enemy;
     [SerializeField] private Plane _plane;
+    [SerializeField] private Transform _model;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
     [SerializeField] float _rotationDeviationMax;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.rotation = Quaternion.Euler(
+        _model.localRotation = Quaternion.Euler(
             -_rotationDeviationMax * _movingJoystick.Direction.y,
             _rotationDeviationMax * _movingJoystick.Direction.x,
             0

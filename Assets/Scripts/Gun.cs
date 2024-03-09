@@ -48,13 +48,8 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(_fireRate);
 
-        var flash = _flashesPool.Acquire();
-        flash.transform.localScale = transform.localScale;
-
-        var bullet = _bulletsPool.Acquire();
-        bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
-
-        _newBulletEvent.Invoke();
+        _flashesPool.Acquire();
+        _bulletsPool.Acquire();
 
         _fireCoroutine = StartCoroutine(Fire());
     }
@@ -62,7 +57,11 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         _flashesPool = new Pool<GameObject>(
-            () => Instantiate(_flashPrefab, transform),
+            () => {
+                var flash = Instantiate(_flashPrefab, transform);
+                flash.transform.localScale = transform.localScale;
+                return flash;
+            },
             (gameObject) => {
                 gameObject.SetActive(true);
                 StartCoroutine(ReleaseFlash(gameObject));
@@ -76,7 +75,9 @@ public class Gun : MonoBehaviour
                 return bullet;
             },
             (gameObject) => {
+                gameObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
                 gameObject.SetActive(true);
+                _newBulletEvent.Invoke();
                 StartCoroutine(ReleaseBullet(gameObject));
             },
             (gameObject) => gameObject.SetActive(false)

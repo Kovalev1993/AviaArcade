@@ -19,7 +19,7 @@ public class Plane : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(_movementSpeed * transform.forward);
+        //transform.Translate(_movementSpeed * transform.forward);
         _propeller.Rotate(_propellerRotationSpeed);
     }
 }
