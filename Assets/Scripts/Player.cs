@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerCameras _playerCameras;
+    [SerializeField] private Transform _enemy;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
     [SerializeField] float _speed;
@@ -56,7 +57,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(_speed * _movingJoystick.Direction);
+        transform.Translate(_speed * _movingJoystick.Direction, Space.World);
+        transform.LookAt(_enemy);
     }
 
     private void Update()
