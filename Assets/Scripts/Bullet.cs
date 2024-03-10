@@ -5,6 +5,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _speed;
+    [SerializeField] private int _damage;
+
+    public int GetDamage()
+    {
+        return _damage;
+    }
 
     public void DeactivateTrail()
     {

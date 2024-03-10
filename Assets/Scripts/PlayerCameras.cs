@@ -10,6 +10,15 @@ public class PlayerCameras : MonoBehaviour
     [SerializeField] private float _heavyImpulseMagnitude;
     [SerializeField] private CinemachineImpulseSource _hevyFireImpulceSource;
 
+    public void StopEnemyAiming()
+    {
+        _commonCamera.LookAt = _commonCamera.Follow;
+    }
+
+    public void StartEnemyAiming(Transform enemyTransform)
+    {
+        _commonCamera.LookAt = enemyTransform;
+    }
 
     public void PrioritizeLightFireCamera()
     {

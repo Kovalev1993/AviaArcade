@@ -1276,7 +1276,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.018273303, y: -0.5322289, z: 0.008526381, w: 0.8463603}
+  m_LocalRotation: {x: -0.018273303, y: -0.5322289, z: 0.008526383, w: 0.8463603}
   m_LocalPosition: {x: 414.16537, y: 34.077267, z: -172.73933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1448,7 +1448,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980816866}
-  m_LocalRotation: {x: -0.018273303, y: -0.5322289, z: 0.008526381, w: 0.8463603}
+  m_LocalRotation: {x: -0.018273303, y: -0.5322289, z: 0.008526383, w: 0.8463603}
   m_LocalPosition: {x: 414.16537, y: 34.077267, z: -172.73933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2999,6 +2999,34 @@ PrefabInstance:
       propertyPath: _clipFromSample.position.z
       value: -16.528076
       objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 963194232}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopEnemyAiming
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerCameras, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847130117107416540, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: _explosionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4610433225149174696, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3516,6 +3544,10 @@ PrefabInstance:
       propertyPath: _clipFromSample.position.z
       value: -16.528076
       objectReference: {fileID: 0}
+    - target: {fileID: 771752860923222662, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 2464747224576353918, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -3567,6 +3599,10 @@ PrefabInstance:
     - target: {fileID: 5365763328757170050, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
       propertyPath: m_Name
       value: PlanePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409941765900757419, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc3538a1a9dafd48985f4bfc534f56f, type: 3}

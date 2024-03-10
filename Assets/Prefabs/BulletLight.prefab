@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trailRenderer: {fileID: 5663647433476963519}
   _speed: 7
+  _damage: 1
 --- !u!136 &8786683625857609611
 CapsuleCollider:
   m_ObjectHideFlags: 0
