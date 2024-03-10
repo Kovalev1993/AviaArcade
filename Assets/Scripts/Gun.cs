@@ -18,12 +18,6 @@ public class Gun : MonoBehaviour
     private Coroutine _fireCoroutine;
     private Pool<GameObject> _flashesPool;
     private Pool<GameObject> _bulletsPool;
-    private float _parentSpeed = 0f;
-
-    public void SetParentSpeed(float parentSpeed)
-    {
-        _parentSpeed = parentSpeed;
-    }
 
     public void StartFire()
     {
@@ -69,18 +63,17 @@ public class Gun : MonoBehaviour
             (gameObject) => gameObject.SetActive(false)
         );
         _bulletsPool = new Pool<GameObject>(
-            () => {
-                var bullet = Instantiate(_bulletPrefab);
-                bullet.GetComponent<Bullet>().SetParentSpeed(_parentSpeed);
-                return bullet;
-            },
+            () =>  Instantiate(_bulletPrefab),
             (gameObject) => {
                 gameObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
                 gameObject.SetActive(true);
                 _newBulletEvent.Invoke();
                 StartCoroutine(ReleaseBullet(gameObject));
             },
-            (gameObject) => gameObject.SetActive(false)
+            (gameObject) => {
+                gameObject.GetComponent<Bullet>().DeactivateTrail();
+                gameObject.SetActive(false);
+            }
         );
     }
 

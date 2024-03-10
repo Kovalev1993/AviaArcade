@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5663647433476963505}
   - component: {fileID: 5663647433476963519}
   - component: {fileID: 5663647433476963518}
+  - component: {fileID: 8786683625857609611}
   m_Layer: 0
   m_Name: BulletLight
   m_TagString: Untagged
@@ -153,4 +154,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87d749669604d442908df1783ed81c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _trailRenderer: {fileID: 5663647433476963519}
+  _speed: 7
+--- !u!136 &8786683625857609611
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663647433476963504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}

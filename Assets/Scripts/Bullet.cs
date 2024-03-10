@@ -1,18 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private float _speed;
 
-    private float _parentSpeed = 0f;
-
-    public void SetParentSpeed(float parentSpeed)
+    public void DeactivateTrail()
     {
-        _parentSpeed = parentSpeed;
+        _trailRenderer.Clear();
     }
 
     private void FixedUpdate()
     {
-        transform.Translate((_speed + _parentSpeed) * transform.forward, Space.World);
+        transform.Translate(_speed * transform.forward, Space.World);
     }
 }
