@@ -10,7 +10,6 @@ public class Plane : MonoBehaviour
     [Header("Impact")]
     [SerializeField] GameObject _impactPrefab;
     [SerializeField] float _impactLifetime;
-    [SerializeField] float _impactScale;
 
     private Pool<GameObject> _impactsPool;
 
@@ -19,11 +18,7 @@ public class Plane : MonoBehaviour
         _propeller.Rotate(Random.value * 360 * _propellerRotationSpeed);
 
         _impactsPool = new Pool<GameObject>(
-            () => {
-                var impact = Instantiate(_impactPrefab, transform);
-                impact.transform.localScale = _impactScale * Vector3.one;
-                return impact;
-            },
+            () => Instantiate(_impactPrefab, transform),
             (gameObject) => {
                 gameObject.SetActive(true);
                 StartCoroutine(ReleaseImact(gameObject));
