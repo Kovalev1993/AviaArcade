@@ -2,15 +2,17 @@ using Dreamteck.Splines;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class Plane : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent ExplosionEvent = new();
+
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private SplineFollower _splineFollower;
     [SerializeField] private Transform _propeller;
     [SerializeField] private Vector3 _propellerRotationSpeed;
-    [SerializeField] private int _health;
-    [SerializeField] private UnityEvent _explosionEvent = new();
+    [SerializeField] private int _maxHealth;
     [Header("Damage effects")]
     [SerializeField] GameObject _impactPrefab;
     [SerializeField] float _impactLifetime;
@@ -18,9 +20,22 @@ public class Plane : MonoBehaviour
     [SerializeField] GameObject _smoke;
 
     private Pool<GameObject> _impactsPool;
+    private int _currentHealth;
+
+    public void ResetPlane()
+    {
+        _currentHealth = _maxHealth;
+        _explosion.SetActive(false);
+        _smoke.SetActive(false);
+        _splineFollower.enabled = true;
+        _rigidbody.isKinematic = true;
+        _rigidbody.useGravity = false;
+    }
 
     private void Start()
     {
+        ResetPlane();
+
         _propeller.Rotate(Random.value * 360 * _propellerRotationSpeed);
 
         _impactsPool = new Pool<GameObject>(
@@ -67,11 +82,11 @@ public class Plane : MonoBehaviour
 
     private void TakeDamage(int damage, Vector3 position)
     {
-        if (_health < 0)
+        if (_currentHealth < 0)
             return;
 
-        _health -= damage;
-        if (_health < 0)
+        _currentHealth -= damage;
+        if (_currentHealth < 0)
             Explode(position);
     }
 
@@ -84,6 +99,6 @@ public class Plane : MonoBehaviour
         _splineFollower.enabled = false;
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
-        _explosionEvent.Invoke();
+        ExplosionEvent.Invoke();
     }
 }

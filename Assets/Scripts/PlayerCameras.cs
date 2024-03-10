@@ -13,11 +13,15 @@ public class PlayerCameras : MonoBehaviour
     public void StopEnemyAiming()
     {
         _commonCamera.LookAt = _commonCamera.Follow;
+        _lightFireCamera.LookAt = _lightFireCamera.Follow;
+        _heavyFireCamera.LookAt = _heavyFireCamera.Follow;
     }
 
     public void StartEnemyAiming(Transform enemyTransform)
     {
         _commonCamera.LookAt = enemyTransform;
+        _lightFireCamera.LookAt = enemyTransform;
+        _heavyFireCamera.LookAt = enemyTransform;
     }
 
     public void PrioritizeLightFireCamera()

@@ -47,11 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a854154e6dccfeb43b83fcfcb5016c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _rigidbody: {fileID: 2996160780952867475}
   _splineFollower: {fileID: 253280491831108606}
   _propeller: {fileID: 2464747224576353918}
   _propellerRotationSpeed: {x: 0, y: 0, z: -15}
-  _health: 20
+  _maxHealth: 20
   _impactPrefab: {fileID: 180772, guid: 52aa1f2e1567b6e47b50df0d054982a7, type: 3}
   _impactLifetime: 1
   _explosion: {fileID: 5413209455484170279}
@@ -84,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddc1a2536715a24095c464a2c394d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateMethod: 0
+  updateMethod: 1
   _spline: {fileID: 0}
   _autoUpdate: 1
   _rotationModifier:
@@ -130,7 +133,7 @@ MonoBehaviour:
   triggerGroup: 0
   _direction: 1
   _dontLerpDirection: 0
-  _physicsMode: 0
+  _physicsMode: 1
   _motion:
     _hasOffset: 0
     _hasRotationOffset: 0
@@ -154,7 +157,7 @@ MonoBehaviour:
     applyScaleY: 0
     applyScaleZ: 0
     targetUser: {fileID: 0}
-  targetRigidbody: {fileID: 0}
+  targetRigidbody: {fileID: 2996160780952867475}
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 4610433225149174696}
   _result:
@@ -171,13 +174,13 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     size: 0
     percent: 0
-  wrapMode: 0
+  wrapMode: 1
   followMode: 0
   autoStartPosition: 0
   _follow: 1
   _startPosition: 0
   preserveUniformSpeedWithOffset: 0
-  _followSpeed: 1
+  _followSpeed: 37
   _followDuration: 1
   _speedModifier:
     blend: 1
