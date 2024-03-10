@@ -205,7 +205,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
+      maxColor: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -819,31 +819,31 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.07542983
+          time: 0
           value: 0
-          inSlope: 0.055476077
-          outSlope: 0.055476077
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.5681848
-        - serializedVersion: 3
-          time: 0.16639057
-          value: 0.9846145
-          inSlope: -0.09402233
-          outSlope: -0.09402233
+          inSlope: 0.15268646
+          outSlope: 0.15268646
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.21827416
-          outWeight: 0.29987222
+          outWeight: 1
         - serializedVersion: 3
-          time: 0.702716
-          value: 0
-          inSlope: -0.15463881
-          outSlope: -0.15463881
+          time: 0.23214002
+          value: 0.9876919
+          inSlope: -0.10823998
+          outSlope: -0.10823998
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33255365
+          inWeight: 0.33333334
+          outWeight: 0.31983548
+        - serializedVersion: 3
+          time: 0.6894256
+          value: 0
+          inSlope: -1.8051413
+          outSlope: -1.8051413
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.3233318
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4876,7 +4876,7 @@ TrailRenderer:
   m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.3
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
