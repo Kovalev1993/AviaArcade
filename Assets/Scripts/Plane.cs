@@ -1,5 +1,6 @@
 using Dreamteck.Splines;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -12,15 +13,21 @@ public class Plane : MonoBehaviour
     [SerializeField] private SplineFollower _splineFollower;
     [SerializeField] private Transform _propeller;
     [SerializeField] private Vector3 _propellerRotationSpeed;
+    [SerializeField] private MeshRenderer _bodyMeshRenderer;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private Transform _centerOfMass;
     [Header("Damage effects")]
     [SerializeField] GameObject _impactPrefab;
     [SerializeField] float _impactLifetime;
     [SerializeField] GameObject _explosion;
     [SerializeField] GameObject _smoke;
+    [SerializeField] float _maxTorqueRoll;
+    [SerializeField] float _torquePitch;
+    [SerializeField] private List<Collider> _colliders = new();
 
     private Pool<GameObject> _impactsPool;
     private int _currentHealth;
+    private float _bodyWidth;
 
     public void ResetPlane()
     {
@@ -30,6 +37,10 @@ public class Plane : MonoBehaviour
         _splineFollower.enabled = true;
         _rigidbody.isKinematic = true;
         _rigidbody.useGravity = false;
+        foreach (var collider in _colliders)
+        {
+            collider.enabled = true;
+        }
     }
 
     private void Start()
@@ -46,6 +57,9 @@ public class Plane : MonoBehaviour
             },
             (gameObject) => gameObject.SetActive(false)
         );
+
+        _bodyWidth = _bodyMeshRenderer.bounds.size.x;
+        _rigidbody.centerOfMass = _centerOfMass.localPosition;
     }
 
     private IEnumerator ReleaseImact(GameObject item)
@@ -99,6 +113,12 @@ public class Plane : MonoBehaviour
         _splineFollower.enabled = false;
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
+        var inversedPosition = transform.InverseTransformPoint(position);
+        _rigidbody.AddTorque(_maxTorqueRoll * inversedPosition.x / _bodyWidth, 0f, _torquePitch);
+        foreach (var collider in _colliders)
+        {
+            collider.enabled = false;
+        }
         ExplosionEvent.Invoke();
     }
 }
