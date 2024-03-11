@@ -20,14 +20,11 @@ public class EnemiesRespawner : MonoBehaviour
         _enemiesPool = new Pool<GameObject>(
             () => Instantiate(_enemyPrefab),
             (gameObject) => {
-                var splineFollower = gameObject.GetComponent<SplineFollower>();
-                splineFollower.spline = _splineComputer;
-                splineFollower.RebuildImmediate();
-                splineFollower.SetPercent(_playerSplineFollower.GetPercent() + percentageDeltaToPlayer);
-
-                _playerCameras.StartEnemyAiming(gameObject.transform);
-
                 var plane = gameObject.GetComponent<Plane>();
+                plane.ResetPlane(_splineComputer, (float)_playerSplineFollower.GetPercent());
+                plane.GetFinishDisplacementEvent().AddListener(() => {
+                    _playerCameras.StartEnemyAiming(gameObject.transform);
+                });
                 plane.ExplosionEvent.AddListener(_playerCameras.StopEnemyAiming);
                 plane.ExplosionEvent.AddListener(ReleaseEnemyAfterDelay);
 
@@ -35,8 +32,8 @@ public class EnemiesRespawner : MonoBehaviour
             },
             (gameObject) => {
                 var plane = gameObject.GetComponent<Plane>();
+                plane.GetFinishDisplacementEvent().RemoveAllListeners();
                 plane.ExplosionEvent.RemoveAllListeners();
-                plane.ResetPlane();
                 gameObject.SetActive(false);
                 SpawnNewEnemyAfterDelay();
             }
@@ -52,7 +49,7 @@ public class EnemiesRespawner : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(_releaseDelay);
+        yield return new WaitForSeconds(_respawnDelay);
         _currentEnemy = _enemiesPool.Acquire();
     }
 

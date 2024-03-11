@@ -57,4 +57,4 @@ MonoBehaviour:
   _flashPrefab: {fileID: 179846, guid: 15d0eae3002f3f247b110cd7610d81b6, type: 3}
   _flashLifetime: 0.5
   _bulletPrefab: {fileID: 5663647433476963504, guid: 2f4baccfba383734482de198cb7a7626, type: 3}
-  _bulletLifetime: 1
+  _bulletLifetime: 3

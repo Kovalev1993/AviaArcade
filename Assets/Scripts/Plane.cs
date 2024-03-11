@@ -1,21 +1,22 @@
+using DG.Tweening;
 using Dreamteck.Splines;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class Plane : MonoBehaviour
 {
     [HideInInspector] public UnityEvent ExplosionEvent = new();
 
+    [SerializeField] private List<Collider> _colliders = new();
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private SplineFollower _splineFollower;
     [SerializeField] private Transform _propeller;
     [SerializeField] private Vector3 _propellerRotationSpeed;
     [SerializeField] private MeshRenderer _bodyMeshRenderer;
-    [SerializeField] private int _maxHealth;
     [SerializeField] private Transform _centerOfMass;
+    [SerializeField] private PlaneDisplacer _planeDisplacer;
+    [SerializeField] private int _maxHealth;
     [Header("Damage effects")]
     [SerializeField] GameObject _impactPrefab;
     [SerializeField] float _impactLifetime;
@@ -23,30 +24,32 @@ public class Plane : MonoBehaviour
     [SerializeField] GameObject _smoke;
     [SerializeField] float _maxTorqueRoll;
     [SerializeField] float _torquePitch;
-    [SerializeField] private List<Collider> _colliders = new();
 
     private Pool<GameObject> _impactsPool;
     private int _currentHealth;
     private float _bodyWidth;
 
-    public void ResetPlane()
+    public UnityEvent GetFinishDisplacementEvent()
+    {
+        return _planeDisplacer.FinishDisplacementEvent;
+    }
+
+    public void ResetPlane(SplineComputer splineComputer, float percent)
     {
         _currentHealth = _maxHealth;
         _explosion.SetActive(false);
         _smoke.SetActive(false);
-        _splineFollower.enabled = true;
         _rigidbody.isKinematic = true;
         _rigidbody.useGravity = false;
         foreach (var collider in _colliders)
         {
             collider.enabled = true;
         }
+        _planeDisplacer.HandleSpawn(splineComputer, percent);
     }
 
     private void Start()
     {
-        ResetPlane();
-
         _propeller.Rotate(Random.value * 360 * _propellerRotationSpeed);
 
         _impactsPool = new Pool<GameObject>(
@@ -110,7 +113,7 @@ public class Plane : MonoBehaviour
         _explosion.SetActive(true);
         _smoke.transform.position = position;
         _smoke.SetActive(true);
-        _splineFollower.enabled = false;
+        _planeDisplacer.HandleDestroying();
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
         var inversedPosition = transform.InverseTransformPoint(position);
