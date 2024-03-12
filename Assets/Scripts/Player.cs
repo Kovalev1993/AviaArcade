@@ -6,15 +6,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _model;
     [SerializeField] private Empennage _empennage;
     [Header("Moving")]
-    [SerializeField] FloatingJoystick _movingJoystick;
-    [SerializeField] float _rotationDeviationMax;
-    [SerializeField] float _deviatonSpeed;
-    [SerializeField] float _returnToLocalZeroDuration;
-    [SerializeField] Ease _returnToLocalZeroEasing;
+    [SerializeField] private FloatingJoystick _movingJoystick;
+    [SerializeField] private float _rotationDeviationMax;
+    [SerializeField] private float _deviatonSpeed;
+    [SerializeField] private float _returnToLocalZeroDuration;
+    [SerializeField] private Ease _returnToLocalZeroEasing;
     [Header("Fire")]
-    [SerializeField] FloatingJoystick _fireJoystick;
-    [SerializeField] Gun[] _lightGuns = new Gun[2];
-    [SerializeField] Gun[] _heavyGuns = new Gun[2];
+    [SerializeField] private FloatingJoystick _fireJoystick;
+    [SerializeField] private Gun[] _lightGuns = new Gun[2];
+    [SerializeField] private Gun[] _heavyGuns = new Gun[2];
 
     private Tween _moveToLocalZeroTween;
     private Tween _rotateToLocalZeroTween;

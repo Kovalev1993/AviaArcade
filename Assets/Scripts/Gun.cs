@@ -4,16 +4,16 @@ using UnityEngine.Events;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] UnityEvent _fireStartEvent;
-    [SerializeField] UnityEvent _newBulletEvent;
-    [SerializeField] UnityEvent _fireStopEvent;
-    [SerializeField] float _fireRate;
+    [SerializeField] private UnityEvent _fireStartEvent;
+    [SerializeField] private UnityEvent _newBulletEvent;
+    [SerializeField] private UnityEvent _fireStopEvent;
+    [SerializeField] private float _fireRate;
     [Header("Flash")]
-    [SerializeField] GameObject _flashPrefab;
-    [SerializeField] float _flashLifetime;
+    [SerializeField] private GameObject _flashPrefab;
+    [SerializeField] private float _flashLifetime;
     [Header("Bullet")]
-    [SerializeField] GameObject _bulletPrefab;
-    [SerializeField] float _bulletLifetime;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private float _bulletLifetime;
 
     private Coroutine _fireCoroutine;
     private Pool<GameObject> _flashesPool;

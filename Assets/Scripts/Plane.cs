@@ -18,12 +18,13 @@ public class Plane : MonoBehaviour
     [SerializeField] private List<TrailRenderer> _wingsTrails = new();
     [SerializeField] private int _maxHealth;
     [Header("Damage effects")]
-    [SerializeField] GameObject _impactPrefab;
-    [SerializeField] float _impactLifetime;
-    [SerializeField] GameObject _explosion;
-    [SerializeField] GameObject _smoke;
-    [SerializeField] float _maxTorqueRoll;
-    [SerializeField] float _torquePitch;
+    [SerializeField] private GameObject _impactPrefab;
+    [SerializeField] private float _impactLifetime;
+    [SerializeField] private GameObject _explosion;
+    [SerializeField] private GameObject _smoke;
+    [SerializeField] private float _maxTorqueRoll;
+    [SerializeField] private float _torquePitch;
+    [SerializeField] private AudioSource _explosionAudioSource;
 
     private Pool<GameObject> _impactsPool;
     private int _currentHealth;
@@ -45,7 +46,8 @@ public class Plane : MonoBehaviour
         {
             collider.enabled = true;
         }
-        foreach (var trail in _wingsTrails) {
+        foreach (var trail in _wingsTrails)
+        {
             trail.Clear();
         }
         _planeDisplacer.HandleSpawn(splineComputer, percent);
@@ -120,11 +122,12 @@ public class Plane : MonoBehaviour
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
         var inversedPosition = transform.InverseTransformPoint(position);
-        _rigidbody.AddTorque(_maxTorqueRoll * inversedPosition.x / _bodyWidth, 0f, _torquePitch);
+        _rigidbody.AddRelativeTorque(_torquePitch, 0f, _maxTorqueRoll * inversedPosition.x / _bodyWidth);
         foreach (var collider in _colliders)
         {
             collider.enabled = false;
         }
+        _explosionAudioSource.Play();
         ExplosionEvent.Invoke();
     }
 }
