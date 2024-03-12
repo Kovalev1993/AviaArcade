@@ -11,11 +11,11 @@ public class PlayerCameras : MonoBehaviour
     [SerializeField] private CinemachineImpulseSource _hevyFireImpulceSource;
     [SerializeField] private CinemachineTargetGroup _targetGroup;
 
-    public void StopEnemyAiming(Transform enemyTransform)
+    public void StopEnemyAiming()
     {
-        _commonCamera.LookAt = _commonCamera.Follow;
-        _lightFireCamera.LookAt = _lightFireCamera.Follow;
-        _heavyFireCamera.LookAt = _heavyFireCamera.Follow;
+        _commonCamera.LookAt = null;
+        _lightFireCamera.LookAt = null;
+        _heavyFireCamera.LookAt = null;
     }
 
     public void StartEnemyAiming(Transform enemyTransform)

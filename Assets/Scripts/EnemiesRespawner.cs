@@ -25,9 +25,7 @@ public class EnemiesRespawner : MonoBehaviour
                 plane.GetFinishDisplacementEvent().AddListener(() => {
                     _playerCameras.StartEnemyAiming(gameObject.transform);
                 });
-                plane.ExplosionEvent.AddListener(() => {
-                    _playerCameras.StopEnemyAiming(gameObject.transform);
-                });
+                plane.ExplosionEvent.AddListener(_playerCameras.StopEnemyAiming);
                 plane.ExplosionEvent.AddListener(ReleaseEnemyAfterDelay);
 
 
