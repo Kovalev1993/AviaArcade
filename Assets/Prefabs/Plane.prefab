@@ -209,7 +209,7 @@ MonoBehaviour:
   _impactLifetime: 1
   _explosion: {fileID: 5413209455484170279}
   _smoke: {fileID: 765984806548864334}
-  _maxTorqueRoll: -200000
+  _maxTorqueRoll: -270000
   _torquePitch: 20000
   _explosionAudioSource: {fileID: 1596491512149375260}
 --- !u!114 &6772935460787133295
