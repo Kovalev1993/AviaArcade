@@ -9,8 +9,9 @@ public class PlayerCameras : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _heavyFireCamera;
     [SerializeField] private float _heavyImpulseMagnitude;
     [SerializeField] private CinemachineImpulseSource _hevyFireImpulceSource;
+    [SerializeField] private CinemachineTargetGroup _targetGroup;
 
-    public void StopEnemyAiming()
+    public void StopEnemyAiming(Transform enemyTransform)
     {
         _commonCamera.LookAt = _commonCamera.Follow;
         _lightFireCamera.LookAt = _lightFireCamera.Follow;

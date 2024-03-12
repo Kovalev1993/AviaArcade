@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform _model;
+    [SerializeField] private Empennage _empennage;
     [Header("Moving")]
     [SerializeField] FloatingJoystick _movingJoystick;
     [SerializeField] float _rotationDeviationMax;
@@ -17,6 +18,11 @@ public class Player : MonoBehaviour
 
     private Tween _moveToLocalZeroTween;
     private Tween _rotateToLocalZeroTween;
+
+    private void Start()
+    {
+        _empennage.SetJoystick(_movingJoystick);
+    }
 
     private void FixedUpdate()
     {

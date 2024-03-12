@@ -84,27 +84,27 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1.7756283
+        outSlope: -1.7756283
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.25090688
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -1
+        inSlope: -0.39809242
         outSlope: 0
-        tangentMode: 5
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.2702539
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.49803922}
+      key0: {r: 1, g: 1, b: 1, a: 0.39215687}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -199,6 +199,9 @@ MonoBehaviour:
   _bodyMeshRenderer: {fileID: 8122544546668303831}
   _centerOfMass: {fileID: 7726195711782810686}
   _planeDisplacer: {fileID: 6772935460787133295}
+  _wingsTrails:
+  - {fileID: 6594293172221279480}
+  - {fileID: 5607225110332195078}
   _maxHealth: 20
   _impactPrefab: {fileID: 180772, guid: 52aa1f2e1567b6e47b50df0d054982a7, type: 3}
   _impactLifetime: 1
@@ -243,12 +246,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _planeModel: {fileID: 8122544546666403635}
+  _maxRudderYaw: 15
+  _rudder: {fileID: 8122544546666403627}
+  _maxElevatorPitch: 30
+  _elevator: {fileID: 8122544546666403637}
   _maxRoll: 25
-  _maxYaw: 0
-  _animator: {fileID: 981455189696445643}
-  _eleronsAnimationName: Roll
-  _rudder: {fileID: 0}
-  _rudderRotationMax: {x: 0, y: 0, z: 0}
+  _eleronLeft: {fileID: 8122544546666403621}
+  _eleronLeftRotationMin: {x: 290.422, y: 193.684, z: 168.324}
+  _eleronLeftRotationMax: {x: 295.524, y: 11.431002, z: 345.135}
+  _eleronRight: {fileID: 8122544546666403623}
+  _eleronRightRotationMin: {x: 295.258, y: 168.79602, z: 188.746}
+  _eleronRightRotationMax: {x: 295.75098, y: 346.568, z: 15.734}
 --- !u!54 &2996160780952867475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -526,27 +534,27 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1.7756283
+        outSlope: -1.7756283
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.25090688
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -1
+        inSlope: -0.39809242
         outSlope: 0
-        tangentMode: 5
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.2702539
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.49803922}
+      key0: {r: 1, g: 1, b: 1, a: 0.39215687}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -811,7 +819,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8122544546666403635}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -110.422, y: 13.684006, z: -11.675995}
+  m_LocalEulerAnglesHint: {x: -64.476, y: 11.431, z: -14.865}
 --- !u!33 &8122544546667173637
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1371,7 +1379,6 @@ GameObject:
   - component: {fileID: 8122544546666403635}
   - component: {fileID: 2817926906683179991}
   - component: {fileID: 4113204540767514220}
-  - component: {fileID: 981455189696445643}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -1437,27 +1444,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.22, y: 3, z: 18.93}
   m_Center: {x: 0, y: 2.3, z: -1.04}
---- !u!95 &981455189696445643
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8122544546666105619}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94101fdaabdab464b9ce2a8ef2a47c8b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8122544546666105621
 GameObject:
   m_ObjectHideFlags: 0

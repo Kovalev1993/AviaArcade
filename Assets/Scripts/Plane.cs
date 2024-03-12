@@ -1,4 +1,3 @@
-using DG.Tweening;
 using Dreamteck.Splines;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ public class Plane : MonoBehaviour
     [SerializeField] private MeshRenderer _bodyMeshRenderer;
     [SerializeField] private Transform _centerOfMass;
     [SerializeField] private PlaneDisplacer _planeDisplacer;
+    [SerializeField] private List<TrailRenderer> _wingsTrails = new();
     [SerializeField] private int _maxHealth;
     [Header("Damage effects")]
     [SerializeField] GameObject _impactPrefab;
@@ -44,6 +44,9 @@ public class Plane : MonoBehaviour
         foreach (var collider in _colliders)
         {
             collider.enabled = true;
+        }
+        foreach (var trail in _wingsTrails) {
+            trail.Clear();
         }
         _planeDisplacer.HandleSpawn(splineComputer, percent);
     }

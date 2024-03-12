@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemiesRespawner : MonoBehaviour
 {
-    [SerializeField] SplineComputer _splineComputer;
-    [SerializeField] PlayerCameras _playerCameras;
-    [SerializeField] SplineFollower _playerSplineFollower;
-    [SerializeField] GameObject _enemyPrefab;
-    [SerializeField] float _respawnDelay;
-    [SerializeField] float _releaseDelay;
-    [SerializeField] float percentageDeltaToPlayer;
+    [SerializeField] private SplineComputer _splineComputer;
+    [SerializeField] private PlayerCameras _playerCameras;
+    [SerializeField] private SplineFollower _playerSplineFollower;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private float _respawnDelay;
+    [SerializeField] private float _releaseDelay;
+    [SerializeField] private float percentageDeltaToPlayer;
 
     private Pool<GameObject> _enemiesPool;
     private GameObject _currentEnemy;
@@ -25,8 +25,11 @@ public class EnemiesRespawner : MonoBehaviour
                 plane.GetFinishDisplacementEvent().AddListener(() => {
                     _playerCameras.StartEnemyAiming(gameObject.transform);
                 });
-                plane.ExplosionEvent.AddListener(_playerCameras.StopEnemyAiming);
+                plane.ExplosionEvent.AddListener(() => {
+                    _playerCameras.StopEnemyAiming(gameObject.transform);
+                });
                 plane.ExplosionEvent.AddListener(ReleaseEnemyAfterDelay);
+
 
                 gameObject.SetActive(true);
             },
