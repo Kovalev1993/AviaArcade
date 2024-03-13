@@ -6,6 +6,7 @@ public class EnemiesRespawner : MonoBehaviour
 {
     [SerializeField] private SplineComputer _splineComputer;
     [SerializeField] private PlayerCameras _playerCameras;
+    [SerializeField] private BumpChecker _bumpChecker;
     [SerializeField] private SplineFollower _playerSplineFollower;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private float _respawnDelay;
@@ -26,8 +27,12 @@ public class EnemiesRespawner : MonoBehaviour
                     _playerCameras.StartEnemyAiming(gameObject.transform);
                 });
                 plane.ExplosionEvent.AddListener(_playerCameras.StopEnemyAiming);
-                plane.ExplosionEvent.AddListener(ReleaseEnemyAfterDelay);
+                plane.ExplosionEvent.AddListener(() => {
+                    ReleaseEnemyAfterDelay();
+                    _bumpChecker.ClearEnemy();
+                });
 
+                _bumpChecker.SetEnemy(gameObject.transform);
 
                 gameObject.SetActive(true);
             },
